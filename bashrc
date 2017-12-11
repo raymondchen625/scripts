@@ -1,7 +1,7 @@
 # general shell aliases
 alias ll='ls -lha'
 alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
-
+alias curl='curl -Ls'
 
 # docker & kubernetes
 alias d-rmdi='docker images -f dangling=true -q | xargs docker rmi'

@@ -10,7 +10,8 @@ alias d-rmall='docker ps -qa | xargs docker rm'
 alias d-names='docker ps --format "{{.Names}}"'
 alias d-images='docker images --format "{{.Repository}}"'
 function d-bash() { docker ps -a | grep $1 | awk '{print "docker exec -it " $1 " bash";exit;}'  ; }
-function kurl() { curl http://localhost:8001/api/v1/namespaces/$1 ; }
+function kpurl() { curl http://localhost:8001/api/v1/namespaces/$1 ; }
+function kurl() { curl http://localhost:8080/api/v1/namespaces/$1 ; }
 
 
 # misc

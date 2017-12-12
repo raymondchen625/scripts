@@ -17,4 +17,4 @@ alias k-rsk8s='cd /etc/systemd/system/multi-user.target.wants; for i in `ls kube
 
 # misc
 alias wttr='curl wttr.in'
-echo "Aliases/Functions prepared for Raymond"
+echo "✈️✈️ Aliases/Functions prepared 🍺🍺"

@@ -43,7 +43,7 @@ function getCookie(cname) {
     }, refreshInterval*1000);
     document.onkeypress = function (e) {
     e = e || window.event;
-    if (e.keyCode == 114 ) {
+    if (e.charCode == 114 ) {
         if (autoRefresh === 'true') {
             setCookie('autoRefresh','false',1);
         } else {

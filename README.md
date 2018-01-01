@@ -7,6 +7,7 @@
 |k8s-auto-refresh.js|A Tampermonkey User Script to refresh Kubernetes console page automatically|Kubernetes||
 |override-settings.sh|Shell script to use settings in current folder to update settings in the same file in parent folder|Shell||
 |git-config, .gitignore|Global config and ignore file for Git|Git||
+|env.jsp|A JSP which prints all environment variables|Java||
 
 
 # Third-party scripts

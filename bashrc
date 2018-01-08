@@ -3,6 +3,12 @@ alias ll='ls -lha'
 alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias curl='curl -Ls'
 
+# tmux
+alias tm-a='tmux a -t '
+alias tm-n='tmux new -s '
+alias tm-k='tmux kill-session -t '
+alias tm-rmall='tmux ls | awk '"'"'{print $1}'"'"' | cut -d: -f1 | awk '"'"'{print "tmux kill-session -t "$1}'"'"' | bash'
+
 # docker & kubernetes
 alias d-rmdi='docker images -f dangling=true -q | xargs docker rmi'
 alias d-stopall='docker ps -q | xargs docker stop'

@@ -4,6 +4,7 @@ alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias curl='curl -Ls'
 
 # tmux
+alias tm='tmux a -t default || tmux new -s default'
 alias tm-a='tmux a -t '
 alias tm-n='tmux new -s '
 alias tm-k='tmux kill-session -t '

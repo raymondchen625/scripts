@@ -4,7 +4,7 @@ alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias curl='curl -Ls'
 
 # tmux
-alias tm='tmux a -t default || tmux new -s default'
+alias tm='tmux ls | grep -q default && tmux a -t default || tmux new -s default'
 alias tm-a='tmux a -t '
 alias tm-n='tmux new -s '
 alias tm-k='tmux kill-session -t '
@@ -25,4 +25,5 @@ alias k-sc='kubectl config use-context'
 
 # misc
 alias wttr='curl wttr.in'
-echo "✈️✈️ Aliases/Functions prepared 🍺🍺"
+# if [ -z $TMUX ] ; then tm; fi
+if [ ! -z $TMUX ] ; then echo "✈️✈️ Aliases/Functions prepared 🍺🍺"; fi

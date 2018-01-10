@@ -27,4 +27,4 @@ alias k-sc='kubectl config use-context'
 # misc
 alias wttr='curl wttr.in'
 # if [ -z $TMUX ] ; then tm; fi
-if [ ! -z $TMUX ] ; then echo "✈️✈️ Aliases/Functions prepared 🍺🍺"; fi
+if [ ! -z $TMUX ] ; then echo "✈️✈️ Joined Tmux session 🍺🍺"; fi

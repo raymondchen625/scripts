@@ -8,6 +8,7 @@
 |override-settings.sh|Shell script to use settings in current folder to update settings in the same file in parent folder|Shell||
 |git-config, .gitignore|Global config and ignore file for Git|Git||
 |env.jsp|A JSP which prints all environment variables|Java||
+|tmux.conf|Tmux config|Shell||
 
 
 # Third-party scripts

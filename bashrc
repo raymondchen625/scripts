@@ -8,6 +8,7 @@ alias tm='tmux ls | grep -q default && tmux a -t default || tmux new -s default'
 alias tm-a='tmux a -t '
 alias tm-n='tmux new -s '
 alias tm-k='tmux kill-session -t '
+alias tm-l='tmux ls'
 alias tm-rmall='tmux ls | awk '"'"'{print $1}'"'"' | cut -d: -f1 | awk '"'"'{print "tmux kill-session -t "$1}'"'"' | bash'
 
 # docker & kubernetes

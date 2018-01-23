@@ -38,6 +38,9 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,mac,dos
 
+" Keep original content when pasting
+set paste
+
 " Turn off backup and swap
 set nobackup
 set nowb

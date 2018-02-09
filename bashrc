@@ -10,6 +10,21 @@ alias tm-n='tmux new -s '
 alias tm-k='tmux kill-session -t '
 alias tm-l='tmux ls'
 alias tm-rmall='tmux ls | awk '"'"'{print $1}'"'"' | cut -d: -f1 | awk '"'"'{print "tmux kill-session -t "$1}'"'"' | bash'
+function tm-ssh() {
+  ipPrefix=153.71.28.
+  user=admin
+  tmux new -d
+  for host in `echo $1 | xargs echo`; do
+	  fullhost=$host
+    echo $host | grep -q "\."
+    [ "$?" = "1" ] && fullhost=$ipPrefix$host
+		[ ! -z "$2" ] && cmd="ssh -l $2 $fullhost" || cmd="ssh $fullhost"
+		tmux split-window -h
+		tmux send-keys "$cmd" 'C-m'
+  done
+  tmux a
+  echo "Multi-SSH session finished"
+}
 
 # docker & kubernetes
 alias d-rmdi='docker images -f dangling=true -q | xargs docker rmi'

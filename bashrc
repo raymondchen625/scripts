@@ -26,6 +26,25 @@ function tm-ssh() {
   tmux a
   echo "Multi-SSH session finished"
 }
+# Usage: $1:command $2(optional): parameter list in each pane if they are different
+function tm-run-in-panes() {
+  [ -z "$TMUX_PANE" ] && (echo "Not in tmux session with panes"; return)
+  panenum=`tmux list-pane | wc -l | xargs echo`
+  currentIdx=`tmux list-pane | grep active | cut -d":" -f1`
+  i=0
+  while [ $i -lt $panenum ]; do
+    tmux select-pane -t $i
+    i=$((i+1))
+    [ "$?" = 1 ] && return
+    if [ -z "$2" ]; then
+      tmux send-keys "$1" 'C-m'
+    else
+      var=`echo $2 | cut -d" " -f$i`
+      tmux send-keys "$1 $var" 'C-m'
+    fi
+  done
+  tmux select-pane -t $currentIdx
+}
 
 # docker & kubernetes
 alias d-rmdi='docker images -f dangling=true -q | xargs docker rmi'

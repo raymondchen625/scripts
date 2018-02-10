@@ -20,7 +20,7 @@ function tm-ssh() {
     [ "$?" = "1" ] && fullhost=$ipPrefix$host
 		[ ! -z "$2" ] && cmd="ssh -l $2 $fullhost" || cmd="ssh $fullhost"
 		tmux split-window -h
-		printf '\033]2;%s\033\\' "$fullhost"
+		tmux send-keys "printf '\033]2;%s\033\\' $fullhost" 'C-m'
 		tmux send-keys "$cmd" 'C-m'
   done
   tmux a

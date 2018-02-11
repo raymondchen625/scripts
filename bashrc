@@ -60,7 +60,22 @@ alias k-rmall='kubectl delete svc,deployments,daemonsets,ingress,cm,secrets,pv,p
 alias k-rsk8s='cd /etc/systemd/system/multi-user.target.wants; for i in `ls kube*`; do systemctl stop $i; systemctl start $i; done; cd -'
 alias k-sc='kubectl config use-context'
 
+# Networking
+
+# Run this on server side to listen: for i in {start..end}; do nc -lv $i & ;done
+# And run probe-ports to probe those ports one by one. 
+function probe-ports() {
+  if [ -z "$1" -o -z "$2" ]; then
+    echo "usage: port-probe.sh HOST PORT-RANGE"
+  else
+    start=`echo $2 | cut -d"-" -f1`
+    end=`echo $2 | cut -d"-" -f2`
+    for i in {$start..$end}; do nc -zv $1 $i 2>&1 | grep -q succeeded; [ "$?" = "1" ] &&  echo "Port $i probe failed." ;done
+  fi
+}
+
+
 # misc
 alias wttr='curl wttr.in'
-# if [ -z $TMUX ] ; then tm; fi
+
 if [ ! -z $TMUX ] ; then echo "✈️✈️ Joined tmux session 🍺🍺"; fi

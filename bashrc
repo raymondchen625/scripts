@@ -15,7 +15,7 @@ function tm-ssh() {
   user=admin
   tmux new -d
   for host in `echo $1 | xargs echo`; do
-	  fullhost=$host
+    fullhost=$host
     echo $host | grep -q "\."
     [ "$?" = "1" ] && fullhost=$ipPrefix$host
 		[ ! -z "$2" ] && cmd="ssh -l $2 $fullhost" || cmd="ssh $fullhost"
@@ -34,14 +34,14 @@ function tm-run-in-panes() {
   i=0
   while [ $i -lt $panenum ]; do
     tmux select-pane -t $i
-    i=$((i+1))
     [ "$?" = 1 ] && return
     if [ -z "$2" ]; then
       tmux send-keys "$1" 'C-m'
     else
-      var=`echo $2 | cut -d" " -f$i`
+      var=`echo $2 | cut -d" " -f$((i+1))`
       tmux send-keys "$1 $var" 'C-m'
     fi
+    i=$((i+1))
   done
   tmux select-pane -t $currentIdx
 }

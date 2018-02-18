@@ -23,6 +23,9 @@ set autoread
 " Set syntax color
 syntax on
 
+" Keep original content when pasting
+set paste
+
 " tabstop 2 and use space for tab
 set tabstop=2
 set shiftwidth=2
@@ -37,9 +40,6 @@ set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,mac,dos
-
-" Keep original content when pasting
-set paste
 
 " Turn off backup and swap
 set nobackup

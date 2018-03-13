@@ -58,6 +58,7 @@ function k-url() { curl http://localhost:8080/api/v1/namespaces/$1 ; }
 function k-bash() { kubectl get pods | grep $1 | awk '{print "kubectl exec -it " $1 " bash";exit;}'  ; }
 alias k-rmall='kubectl delete svc,deployments,daemonsets,ingress,cm,secrets,pv,pvc --all -n '
 alias k-rsk8s='cd /etc/systemd/system/multi-user.target.wants; for i in `ls kube*`; do systemctl stop $i; systemctl start $i; done; cd -'
+function k-rd() { kubectl delete -f $1 | kubectl apply -f $1 ; }
 alias k-sc='kubectl config use-context'
 alias k-af='kubectl apply -f '
 alias k-df='kubectl delete -f '

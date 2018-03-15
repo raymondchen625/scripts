@@ -9,6 +9,7 @@
 |git-config, .gitignore|Global config and ignore file for Git|Git||
 |env.jsp|A JSP which prints all environment variables|Java||
 |tmux.conf|Tmux config|Shell||
+|spinner.sh|A spinner function to show progress|Shell||
 
 
 # Third-party scripts

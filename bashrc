@@ -1,5 +1,5 @@
 # general shell aliases
-alias ll='ls -lha'
+alias ll='ls -lha --color=auto'
 alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias curl='curl -Ls'
 

@@ -78,6 +78,11 @@ function probe-ports() {
   fi
 }
 
+# System services
+function svc-start() { systemctl start $1 ; }
+function svc-stop() { systemctl stop $1 ; }
+function svc-restart() { systemctl restart $1 ; }
+
 
 # misc
 alias wttr='curl wttr.in'

@@ -2,6 +2,7 @@
 alias ll='ls -lha --color=auto'
 alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias curl='curl -Ls'
+export SYSTEMD_EDITOR=/usr/bin/vim
 
 # tmux
 alias tm='tmux ls | grep -q default && tmux a -t default || tmux new -s default'

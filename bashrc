@@ -88,4 +88,12 @@ function svc-restart() { systemctl restart $1 ; }
 # misc
 alias wttr='curl wttr.in'
 
+# Start or attach to an SSH agent
+SAGENT_PID=`ps -ef | grep ssh-agent | grep -v grep | awk '{print $2}'`
+if [ -z "$SAGENT_PID" ]; then
+	 export SSH_AGENT_PID=$SAGENT_PID
+else 
+	eval "`ssh-agent`"
+fi
+
 if [ ! -z $TMUX ] ; then echo "✈️✈️ Joined tmux session 🍺🍺"; fi

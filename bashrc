@@ -58,13 +58,17 @@ function d-bash() { docker ps -a | grep $1 | awk '{print "docker exec -it " $1 "
 function k-proxurl() { curl http://localhost:8001/api/v1/namespaces/$1 ; }
 function k-url() { curl http://localhost:8080/api/v1/namespaces/$1 ; }
 function k-bash() { kubectl get pods | grep $1 | awk '{print "kubectl exec -it " $1 " bash";exit;}'  ; }
-function k8s() { for i in kubelet kube-proxy kube-apiserver kube-controller-manager kube-scheduler etcd ; do systemctl $1 $i ; done }
+function k-svc() { for i in kubelet kube-proxy kube-apiserver kube-controller-manager kube-scheduler etcd docker ; do systemctl $1 $i ; done }
 alias k-rmall='kubectl delete svc,deployments,daemonsets,ingress,cm,secrets,pv,pvc --all -n '
-alias k-rsk8s='cd /etc/systemd/system/multi-user.target.wants; for i in `ls kube*`; do systemctl stop $i; systemctl start $i; done; cd -'
+alias k-restart-kube='cd /etc/systemd/system/multi-user.target.wants; for i in `ls kube*`; do systemctl stop $i; systemctl start $i; done; cd -'
+alias k-stop-kube='cd /etc/systemd/system/multi-user.target.wants; for i in `ls kube*`; do systemctl stop $i; done; cd -'
 function k-rd() { kubectl delete -f $1 | kubectl apply -f $1 ; }
 alias k-sc='kubectl config use-context'
 alias k-af='kubectl apply -f '
 alias k-df='kubectl delete -f '
+alias k-watch-pods='watch -n 3 kubectl get po --all-namespaces -o wide'
+alias k-watch-nodes='watch -n 3 kubectl get nodes -o wide'
+alias k-show-statuses='for i in flanneld docker kube-apiserver kube-controller-manager kube-scheduler kubelet kube-proxy; do systemctl status $i | head -5 ; done | grep active -A3 -B3'
 
 # Networking
 

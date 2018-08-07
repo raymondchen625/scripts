@@ -8,6 +8,20 @@ export SYSTEMD_EDITOR=/usr/bin/vim
 export PS1='[\u@\h \W]\$'
 export PS2='>'
 
+export CDPATH=~:/etc/systemd/system
+
+# cd aliases
+alias cd..="cd .."
+alias cd...="cd ../.."
+alias cd....="cd ../../.."
+alias cd.....="cd ../../../.."
+alias cd......="cd ../../../../.."
+alias ..="cd .."
+alias ..2="cd ../.."
+alias ..3="cd ../../.."
+alias ..4="cd ../../../.."
+alias ..5="cd ../../../../.."
+
 # tmux
 alias tm='tmux ls | grep -q default && tmux a -t default || tmux new -s default'
 alias tm-a='tmux a -t '

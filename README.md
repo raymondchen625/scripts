@@ -10,6 +10,7 @@
 |env.jsp|A JSP which prints all environment variables|Java||
 |tmux.conf|Tmux config|Shell||
 |spinner.sh|A spinner function to show progress|Shell||
+|playing_in_browser|An AppleScript to return the music title being played in a browser tab which matches the pre-defined URLs. Plus an extra script to simulate a keystroke on that tab|AppleScript||
 
 
 # Third-party scripts

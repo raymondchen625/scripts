@@ -1,3 +1,4 @@
+# Sends a space keystroke to the URL matching tab.
 set urlList to {"http://music.youtube.com/", "https://music.youtube.com/"}
 tell application "System Events"
   set frontApp to first application process whose frontmost is true

@@ -107,6 +107,20 @@ function svc-stop() { systemctl stop $1 ; }
 function svc-restart() { systemctl restart $1 ; }
 function svc-status() { systemctl status -l $1 ; }
 
+# sshfs mount/umount
+function ssh-mount() {
+  loginUser=$USER
+  if [ -z $2 ]; then
+    loginUser=$2
+  fi
+  mkdir -p ~/sshfs/$1
+  sudo mount -t sshfs -o allow_other,defer_permissions $2@$1:/ ~/sshfs/$1
+  cd ~/sshfs/$1
+}
+function ssh-umount() {
+  sudo umount ~/sshfs/$1
+}
+
 # misc
 alias wttr='curl wttr.in'
 

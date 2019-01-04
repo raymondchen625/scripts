@@ -121,9 +121,16 @@ function ssh-umount() {
   sudo umount ~/sshfs/$1
 }
 
+# Go
+# Perform Go benchmark
+alias go_bench='go test -v --bench . --benchmem'
+
 # misc
 alias wttr='curl wttr.in'
 
+# SSH related
+alias add-keys='if ssh-add -l > /dev/null ; then : ; else for i in `ls ~/.ssh/id_rsa* | grep -v pub` ; do ssh-add $i ; done ; fi'
+alias clear_known_hosts='echo > ~/.ssh/known_hosts'
 # Start or attach to an SSH agent
 SAGENT_PID=`ps -ef | grep ssh-agent | grep -v grep | awk '{print $2}'`
 if [ -z "$SAGENT_PID" ]; then

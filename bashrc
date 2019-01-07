@@ -5,7 +5,8 @@ alias curl='curl -Ls'
 alias vi='vim'
 
 export SYSTEMD_EDITOR=/usr/bin/vim
-export PS1='[\u@\h \W]\$'
+#export PS1='[\u@\h \W]\$'
+export PS1='🍺 macos \w🍺 \$'
 export PS2='>'
 
 export CDPATH=~:/etc/systemd/system

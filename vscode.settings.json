@@ -1,0 +1,10 @@
+{
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": true,
+    "terminal.integrated.rendererType": "dom",
+    "git.autofetch": true,
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 0,
+}

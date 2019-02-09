@@ -5,7 +5,8 @@ alias curl='curl -Ls'
 alias vi='vim'
 
 export SYSTEMD_EDITOR=/usr/bin/vim
-export PS1='[\u@\h \W]\$'
+#export PS1='[\u@\h \W]\$'
+export PS1='🍺 macos \w🍺 \$'
 export PS2='>'
 
 export CDPATH=~:/etc/systemd/system
@@ -107,9 +108,30 @@ function svc-stop() { systemctl stop $1 ; }
 function svc-restart() { systemctl restart $1 ; }
 function svc-status() { systemctl status -l $1 ; }
 
+# sshfs mount/umount
+function ssh-mount() {
+  loginUser=$USER
+  if [ -z $2 ]; then
+    loginUser=$2
+  fi
+  mkdir -p ~/sshfs/$1
+  sudo mount -t sshfs -o allow_other,defer_permissions $2@$1:/ ~/sshfs/$1
+  cd ~/sshfs/$1
+}
+function ssh-umount() {
+  sudo umount ~/sshfs/$1
+}
+
+# Go
+# Perform Go benchmark
+alias go_bench='go test -v --bench . --benchmem'
+
 # misc
 alias wttr='curl wttr.in'
 
+# SSH related
+alias add-keys='if ssh-add -l > /dev/null ; then : ; else for i in `ls ~/.ssh/id_rsa* | grep -v pub` ; do ssh-add $i ; done ; fi'
+alias clear_known_hosts='echo > ~/.ssh/known_hosts'
 # Start or attach to an SSH agent
 SAGENT_PID=`ps -ef | grep ssh-agent | grep -v grep | awk '{print $2}'`
 if [ -z "$SAGENT_PID" ]; then

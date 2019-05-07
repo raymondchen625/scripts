@@ -7,4 +7,5 @@ on run {input, parameters}
 			end tell
 		end tell
 	end tell
+	activate application "iTerm"
 end run

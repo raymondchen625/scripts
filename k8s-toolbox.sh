@@ -10,7 +10,7 @@
   "$KREW" update
 )
 
-echo "export PATH=\"${PATH}:${HOME}/.krew/bin\" >> ~/.bashrc
+echo 'export PATH="${PATH}:${HOME}/.krew/bin"' >> ~/.bashrc
 source ~/.bashrc
 # kubectx
 kubectl krew install ctx

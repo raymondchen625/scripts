@@ -1,3 +1,14 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'fatih/vim-go'
+Plug '/usr/local/opt/fzf'
+
+call plug#end()
+
+
+filetype off
+filetype plugin indent on
+
 " Set wildmenu to enable autocomplete
 set wildmenu
 " Ignore compiled files

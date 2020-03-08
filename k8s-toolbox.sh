@@ -16,6 +16,8 @@ source ~/.bashrc
 kubectl krew install ctx
 # kubens
 kubectl krew install ns
+# tree
+kubectl krew install tree
 # stern
 curl -LS https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 -o stern ; chmod +x stern ; sudo mv stern /usr/local/sbin/
 # kube-prompt

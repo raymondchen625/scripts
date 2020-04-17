@@ -24,6 +24,11 @@ alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
+# Google IAP Proxy
+function iap() {
+  first=$1 ; shift ; second=$1 ; shift ; third=$1; shift ; rest=$@
+  echo "gcloud beta compute start-iap-tunnel $rest "$first" "$second" --local-host-port=localhost:${third:-$second} " | bash
+}
 # tmux
 alias tm='tmux ls | grep -q default && tmux a -t default || tmux new -s default'
 alias tm-a='tmux a -t '

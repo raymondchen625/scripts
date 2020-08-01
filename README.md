@@ -21,4 +21,3 @@
 |kubectx|Switch Kubernetes Context|Kubernetes|https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx|
 |jump|jump between directories|Shell|https://github.com/gsamokovarov/jump|
 |awesome shell|a collection of awesome shell scripts|Shell|https://github.com/alebcay/awesome-shell|
-|sshrc|bring .bashrc, .vimrc and .tmux.conf when ssh to a host|https://github.com/Russell91/sshrc|

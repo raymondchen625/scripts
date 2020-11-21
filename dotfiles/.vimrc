@@ -59,3 +59,8 @@ set noswapfile
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+" tn/td/te/tm to new/close/open/move tabs
+nnoremap tn :tabnew<CR>
+nnoremap td :tabclose<CR>
+nnoremap te :tabe 
+nnoremap tm :tabm 

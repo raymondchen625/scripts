@@ -93,6 +93,7 @@ alias k-df='kubectl delete -f '
 alias k-watch-pods='watch -n 3 kubectl get po --all-namespaces -o wide'
 alias k-watch-nodes='watch -n 3 kubectl get nodes -o wide'
 alias k-show-statuses='for i in flanneld docker kube-apiserver kube-controller-manager kube-scheduler kubelet kube-proxy; do systemctl status $i | head -5 ; done | grep active -A3 -B3'
+alias k-complete='source <(kubectl completion bash)'
 
 # Networking
 

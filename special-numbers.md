@@ -12,3 +12,8 @@ ff00 # Prefix reserved for multicast IP addresses in IPv6
 FE80:: # Link local IPv6 addresses
 64/1518 # Default Min/Max Ethernet frame size
 9000 bytes # Ethernet Jumbo Frame size
+67/68 # UDP port numbers of DHCP server/client
+546/547 # UDP/IPv6 port numbers of DHCPv6 client/server
+169.254.1.1-169.254.254.254 # IPv4 link-local IP range
+33435 # UDP IPv4 port for traceroute time exceeded type ICMP packets
+536/1440 bytes # Default Max Segment Size of IPv4/IPv6

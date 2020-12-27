@@ -35,7 +35,7 @@
   # Shows remote info
   rv = remote -v
   # Displays one-line change-logs
-  cl = log --pretty=changelog --no-merges --cherry --abbrev-commit --date-order
+  clog = log --pretty=changelog --no-merges --cherry --abbrev-commit --date-order
   # Displays pretty history
   ph = log --graph --pretty=pretty-history --abbrev-commit --date=relative
   # Displays pretty detailed history

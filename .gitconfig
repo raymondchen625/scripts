@@ -1,3 +1,46 @@
 [user]
-	name = Raymond
+	name = Raymond Chen
 	email = raymondchen625@gmail.com
+[pretty]
+    changelog = format:* %h %s 
+    pretty-history = format:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  # Checks the files out, that have the state in the staging area.
+  co-staged = !git diff-index --cached --name-only --diff-filter=ACMR HEAD | xargs git co
+  # diff
+  di = diff
+  # Shows only the diff from the files in the staging area.
+  staged = diff --cache
+  # Shows the diff between the staging area and my modified files.
+  di-staged = !git diff-index --cached --name-only --diff-filter=ACMR HEAD | xargs git di
+  # Shows the diff between my working tree and the last commit
+  dilc = diff --cached HEAD^
+  # Fetches the remote verbosely
+  fa = fetch --all -v
+  # Applies the changes from remote only when it would be possible via fast forward.
+  ff = pull --ff-only
+  # Shows remote info
+  rv = remote -v
+  # Displays one-line change-logs
+  cl = log --pretty=changelog --no-merges --cherry --abbrev-commit --date-order
+  # Displays pretty history
+  ph = log --graph --pretty=pretty-history --abbrev-commit --date=relative
+  # Displays pretty detailed history
+  pdh = log --pretty=pretty-history --decorate --numstat
+  # Shows the history of a single file
+  fl = log -u
+  # Show stat logs
+  sl = log --oneline --reverse --no-merges --stat
+  # Add only files that are already tracked
+  update = add -u
+  # Add only files that are already in staging area
+  up-staged = !f() { git ls-staged; }; git add -p `f`
+  # Merge with ours
+  ours = "!f() { git co --ours $@ && git add $@; }; f"
+  # Merge with theirs
+  theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+  # List tags
+  lt = describe --tags --abbrev=0  

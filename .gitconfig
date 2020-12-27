@@ -1,6 +1,16 @@
 [user]
 	name = Raymond Chen
 	email = raymondchen625@gmail.com
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[color]
+  ui = auto
 [pretty]
     changelog = format:* %h %s 
     pretty-history = format:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset

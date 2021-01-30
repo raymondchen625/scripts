@@ -1,18 +1,24 @@
 #!/usr/bin/osascript
 tell application "System Preferences"
-	activate
+ activate
   delay 0.5
   set current pane to pane id "com.apple.preference.sidecar"
   delay 0.5
   tell application "System Events"
      tell process "System Preferences"
         tell first window
-			tell menu button "Select Device"
-				click
- 				delay 0.5
- 				click menu item "iPad" of menu 1
-			end tell
-		end tell
+        if exists button "Disconnect"
+        tell button "Disconnect"
+          click
+        end tell
+        else
+        tell menu button "Select Device"
+            click
+              delay 0.5
+              click menu item "iPad" of menu 1
+        end
+        end
+  end tell
       end tell
     end tell
 end

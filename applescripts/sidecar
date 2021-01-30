@@ -22,3 +22,9 @@ tell application "System Preferences"
       end tell
     end tell
 end
+delay 0.5
+tell application "System Events"
+  key down command
+  keystroke tab
+  key up command
+end tell

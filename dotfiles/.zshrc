@@ -4,15 +4,9 @@ alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias curl='curl -Ls'
 alias vi='vim'
 
-export SYSTEMD_EDITOR=/usr/bin/vim
-export HISTSIZE=100000
-export HISTFILESIZE=1000000
+
 # This is for macOS Big Sur
 ulimit -S -n 2048
-export PS1='%m %3~/ %# '
-
-export PATH=$PATH:/usr/local/bin:/Users/raymondchen/bin
-export CDPATH=~:/etc/systemd/system
 
 # cd aliases
 alias cd..="cd .."

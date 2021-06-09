@@ -3,6 +3,7 @@ alias ll='ls -lhaG'
 alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias curl='curl -Ls'
 alias vi='vim'
+alias rm='rm -i'
 bindkey \^U backward-kill-line
 
 

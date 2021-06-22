@@ -6,6 +6,8 @@ alias vi='vim'
 alias rm='rm -i'
 bindkey \^U backward-kill-line
 
+# Enable interactive comments
+setopt interactive_comments
 
 # This is for macOS Big Sur
 ulimit -S -n 2048

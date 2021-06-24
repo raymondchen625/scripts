@@ -1,5 +1,6 @@
 export SYSTEMD_EDITOR=/usr/bin/vim
 export HISTSIZE=100000
+export SAVEHIST=100000
 export HISTFILESIZE=1000000
 
 export PS1='%m %3~/ %# '

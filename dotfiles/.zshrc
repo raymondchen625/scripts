@@ -24,6 +24,8 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 # removes blank lines from history
 setopt HIST_REDUCE_BLANKS
+# remove command lines starting with a space from the history
+setopt HIST_IGNORE_SPACE
 
 # This is for macOS Big Sur
 ulimit -S -n 2048

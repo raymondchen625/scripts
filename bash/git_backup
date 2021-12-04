@@ -1,0 +1,30 @@
+#!/bin/zsh
+if [ -z "$1" ]; then
+  echo "Enter target backup dir:"
+  read dest
+else
+  dest="$1"
+fi
+if [ -z "$dest" ]; then
+  echo "Error: empty target dir."
+  exit 1
+fi
+dest=$(echo $dest | sed -E "s%^(~)(.*)%$HOME\2%g")
+if [ -f "$dest" ]; then
+  echo "Error: $dest is a file"
+  exit 1
+fi
+if [ -d "$dest" ]; then
+  echo "$dest directory exists, override?[Y/N]"
+  read confirm
+  if [ "Y"!="$confirm" -a "y"!="$confirm" ]; then
+    exit 1
+  fi
+else
+  mkdir -p $dest
+fi
+echo "Backing up to $dest:"
+for file in $(git status -s | awk '{print $2}'); do
+  echo "$file"
+  rsync -R $file $dest/
+done

@@ -1,0 +1,14 @@
+#!/bin/zsh
+file=$(basename $0)
+declare -A names
+names[firefox]='FireFox'
+names[chrome]='Google Chrome'
+names[subl]='Sublime Text'
+names[macvim]='MacVim'
+names[code]='Visual Studio Code'
+names[vscode]='Visual Studio Code'
+
+appName=${names[${file}]}
+appName=${appName:-$file}
+
+open -a $appName $1

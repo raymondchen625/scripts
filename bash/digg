@@ -1,0 +1,2 @@
+#!/bin/zsh
+for i in A AAAA CNAME TXT HINFO SOA SRV; do dig +noall +answer +multiline $1 $i ; done

@@ -1,0 +1,8 @@
+#!/bin/zsh
+git checkout main
+if [ $? != 0 ]; then
+  echo "Error in $(pwd)"
+  exit 1
+fi
+git pull
+git branch | grep -v main | xargs git branch -D

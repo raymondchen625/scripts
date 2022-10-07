@@ -1,0 +1,5 @@
+#!/bin/bash
+for cmd in sha1sum sha256sum sha512sum md5sum ; do
+echo -n "$cmd: "
+$cmd ${1:--}
+done

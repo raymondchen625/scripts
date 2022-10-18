@@ -1,0 +1,11 @@
+#!/bin/bash
+function jwt_decode(){
+    jq -R 'split(".") | .[0] | @base64d | fromjson' <<< "$1"
+    jq -R 'split(".") | .[1] | @base64d | fromjson' <<< "$1"
+}
+if [[ -p /dev/stdin ]]; then
+    input="$(cat -)"
+else
+    input="${@}"
+fi
+jwt_decode $input

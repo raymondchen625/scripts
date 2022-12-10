@@ -1,0 +1,21 @@
+#!/bin/bash
+# Usage: upload_server <token>
+# Start a simple-upload-server with ngrok for uploading files from remtoe to local.
+# Server stops automatically after 5 minutes.
+if [ -z "$1" ]; then
+  echo "Usage: upload_server <token>"
+  exit
+fi
+docker run -d --name simple-upload-server --rm -p 25478:25478 -v $HOME/tmp:/var/root mayth/simple-upload-server -token $1 -upload_limit 1073741824 /var/root
+ngrok http --log=stdout 25478 > /dev/null &
+sleep 2
+upload_endpoint=`curl localhost:4040/api/tunnels | jq -r '.tunnels[].public_url' | grep https`
+cd ~/tmp/
+echo
+echo
+echo "Run this in the remote shell and find the uploaded files in local ~/tmp/:"
+echo "curl -Ffile=@dump.hprof  '${upload_endpoint}/upload?token=${1}'"
+sleep 300
+echo "Stopping ngrok and simple-upload-server automatically..."
+pkill -9 ngrok
+docker stop simple-upload-server

@@ -1,4 +1,6 @@
 #!/bin/zsh
+# Usage: git_backup [target_dir]
+# Backs up all modified or untracked files that are not in .gitignore to the target directory.
 if [ -z "$1" ]; then
   echo "Enter target backup dir:"
   read dest

@@ -1,0 +1,16 @@
+#!/bin/bash
+# Works with loop_otp. It uses the gpg encrypted file ~/.aws/aws-mfa.gpg to get the MFA seed.
+# Export the seed to the environment variable seed and run loop_otp in the background.
+seed=$(gpg --decrypt ~/.aws/aws-mfa.gpg 2>/dev/null)
+if [ $? != 0 ]; then
+  echo "Failed to decrypt MFA seed"
+  gpg-connect-agent reloadagent /bye > /dev/null
+  exit 1
+fi
+ps -ef | grep -v grep | grep loop_otp
+if [ $? = 0 ]; then
+  old_pid=$(ps -ef | grep loop_otp | grep -v grep | awk '{print $2}')
+  kill -9 $old_pid
+fi
+export seed
+loop_otp &

@@ -1,0 +1,4 @@
+#!/bin/zsh
+# Usage: lsudp
+# Lists all UDP connections
+lsof -P -iUDP -n

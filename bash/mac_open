@@ -1,4 +1,6 @@
 #!/bin/zsh
+# Usage: create a symbolic link to this file in the PATH e.g. ln -s /path/to/mac_open /usr/local/bin/firefox
+# Then you can open applications with a parameter by running e.g. firefox url
 file=$(basename $0)
 declare -A names
 names[firefox]='FireFox'

@@ -1,4 +1,6 @@
 #!/bin/zsh
+# Usage: git_remove_all_branches
+# Removes all branches except main
 git checkout main
 if [ $? != 0 ]; then
   echo "Error in $(pwd)"

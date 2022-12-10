@@ -1,4 +1,6 @@
 #!/bin/bash
+# Usage: timestamp_to_date <timestamp>
+# Converts a timestamp(long integer) to a date
 if [[ -p /dev/stdin ]]; then
     input="$(cat -)"
 else

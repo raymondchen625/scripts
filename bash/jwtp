@@ -1,4 +1,5 @@
 #!/bin/bash
+# Usage: source this and call function: jwt_decode <jwt_token>
 function jwt_decode(){
     jq -R 'split(".") | .[0] | @base64d | fromjson' <<< "$1"
     jq -R 'split(".") | .[1] | @base64d | fromjson' <<< "$1"

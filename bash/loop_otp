@@ -1,0 +1,9 @@
+#!/bin/bash
+# Refresh every 30 seconds at :00 or :30, and write the OTP to ~/.aws/mfa_otp
+while true; do
+sec="$(expr $(date +%S) % 30)"
+if [ $sec = "0" ]; then
+  /usr/local/bin/oathtool --base32 --totp $seed | tr -d '\n' > ~/.aws/mfa_otp
+fi
+sleep 1
+done

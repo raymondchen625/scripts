@@ -1,0 +1,4 @@
+#!/bin/zsh
+# Usage: lstcp
+# Lists all TCP connections
+lsof -P -iTCP -n

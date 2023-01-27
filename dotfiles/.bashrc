@@ -82,6 +82,7 @@ alias d-stopall='docker ps -q | xargs docker stop'
 alias d-rmall='docker ps -qa | xargs docker rm'
 alias d-names='docker ps --format "{{.Names}}"'
 alias d-images='docker images --format "{{.Repository}}"'
+alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage -sV=1.36"
 function d-bash() { docker ps -a | grep $1 | awk '{print "docker exec -it " $1 " bash";exit;}'  ; }
 function k-proxurl() { curl http://localhost:8001/api/v1/namespaces/$1 ; }
 function k-url() { curl http://localhost:8080/api/v1/namespaces/$1 ; }

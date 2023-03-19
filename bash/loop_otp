@@ -1,8 +1,15 @@
 #!/bin/bash
-# Refresh every 30 seconds at :00 or :30, and write the OTP to ~/.aws/mfa_otp
+rm -f ~/.aws/mfa_loop_stop
 while true; do
+hour=$(date +%H)
 sec="$(expr $(date +%S) % 30)"
+# Delete mfa_otp file and exit loop if not in working hours
+if [ $hour -lt 8 -o $hour -gt 18 -o -f ~/.aws/mfa_loop_stop ]; then
+  rm -f ~/.aws/mfa_otp
+  break
+fi
 if [ $sec = "0" ]; then
+  #/usr/local/bin/oathtool --base32 --totp $seed 
   /usr/local/bin/oathtool --base32 --totp $seed | tr -d '\n' > ~/.aws/mfa_otp
 fi
 sleep 1

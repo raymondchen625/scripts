@@ -2,8 +2,6 @@
 
 |Name|Description|Tag/Folder|URL|
 |----|-----------|---|---|
-|authkeys|Raymond's SSH login public key|bash|http://bit.do/rcpubkeys|
-|bashrc|My aliases/functions for Bash Shell|bash|http://bit.do/rcbashrc  usage: eval "`curl -Ls bit.do/rcbashrc`"|
 |k8s-auto-refresh.js|A Tampermonkey User Script to refresh Kubernetes console page automatically|javascript||
 |override-settings.sh|Shell script to use settings in current folder to update settings in the same file in parent folder|bash||
 |git-config, .gitignore|Global config and ignore file for Git|Git||

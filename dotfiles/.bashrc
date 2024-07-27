@@ -9,8 +9,8 @@ export HISTSIZE=100000
 export HISTFILESIZE=1000000
 # This is for macOS Big Sur
 ulimit -S -n 2048
-#export PS1='[\u@\h \W]\$'
-export PS1='🍺 macos \w🍺 \$'
+export PS1='[\u@\h \W]\$'
+#export PS1='🍺 macos \w🍺 \$'
 export PS2='>'
 
 

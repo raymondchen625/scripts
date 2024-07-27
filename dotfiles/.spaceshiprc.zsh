@@ -36,13 +36,18 @@ SPACESHIP_PROMPT_ORDER=(
     char           # Prompt character
   )
 # Precmd function to check if current directory matches the specified directory
-function raymond_precmd() {
+function raymond_chpwd() {
 # Only show kctx in hds-cmcf-deploy
   KUBECTL_DIRECTORY="$HOME/code/hds-cmcf-deploy"
   if [[ "$PWD" == "$KUBECTL_DIRECTORY"* ]]; then
     SPACESHIP_KUBECTL_CONTEXT_SHOW=true
   else
     SPACESHIP_KUBECTL_CONTEXT_SHOW=false
+  fi
+  rand=$(shuf -i 1-10 -n 1)
+  if [ -d ".git" -a $rand = 1 ]; then
+    git fetch -q --prune
+    echo "git fetched 🎉"
   fi
 }
 

@@ -4,7 +4,32 @@ alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias curl='curl -Ls'
 alias vi='vim'
 alias rm='rm -i'
+alias cm='chmod +x'
+alias python='python3'
+alias pyvenv='source /Users/raymondchen/app/python-env/bin/activate'
+alias cx='chmod +x'
+
+# Git aliases
+alias gb='git branch -v'
+alias gp='git pull'
+alias gs='git status'
+alias gck='git checkout'
+alias gd='git diff'
+alias gdl='git diff | less'
+alias gdc='git diff --cached'
+alias gdcl='git diff --cached | less'
+alias gll='git log | less'
+alias glp='git log --pretty=oneline'
+alias glpl='git log --pretty=oneline | less'
+alias grm='git rebase main'
+alias gcm='git checkout main;git pull'
+alias gst='git stash'
+alias gsa='git stash apply'
+alias gr='git remote -v'
+
 bindkey \^U backward-kill-line
+
+export EDITOR=subl
 
 # Useful setopts
 # Enable interactive comments
@@ -47,29 +72,7 @@ function iap() {
   first=$1 ; shift ; second=$1 ; shift ; third=$1; shift ; rest=$@
   echo "gcloud beta compute start-iap-tunnel $rest "$first" "$second" --local-host-port=localhost:${third:-$second} " | bash
 }
-# tmux
-alias tm='tmux ls | grep -q default && tmux a -t default || tmux new -s default'
-alias tm-a='tmux a -t '
-alias tm-n='tmux new -s '
-alias tm-k='tmux kill-session -t '
-alias tm-l='tmux ls'
-alias tm-rmall='tmux ls | awk '"'"'{print $1}'"'"' | cut -d: -f1 | awk '"'"'{print "tmux kill-session -t "$1}'"'"' | bash'
-function tm-ssh() {
-  ipPrefix=153.71.28.
-  user=admin
-  tmux new -d
-  for host in `echo $1 | xargs echo`; do
-    fullhost=$host
-    echo $host | grep -q "\."
-    [ "$?" = "1" ] && fullhost=$ipPrefix$host
-		[ ! -z "$2" ] && cmd="ssh -l $2 $fullhost" || cmd="ssh $fullhost"
-		tmux split-window -h
-		tmux send-keys "printf '\033]2;%s\033\\' $fullhost" 'C-m'
-		tmux send-keys "$cmd" 'C-m'
-  done
-  tmux a
-  echo "Multi-SSH session finished"
-}
+
 # Usage: $1:command $2(optional): parameter list in each pane if they are different
 function tm-run-in-panes() {
   [ -z "$TMUX_PANE" ] && (echo "Not in tmux session with panes"; return)
@@ -112,7 +115,8 @@ alias k-df='kubectl delete -f '
 alias k-watch-pods='watch -n 3 kubectl get po --all-namespaces -o wide'
 alias k-watch-nodes='watch -n 3 kubectl get nodes -o wide'
 alias k-show-statuses='for i in flanneld docker kube-apiserver kube-controller-manager kube-scheduler kubelet kube-proxy; do systemctl status $i | head -5 ; done | grep active -A3 -B3'
-alias k-complete='source <(kubectl completion bash)'
+alias k-complete='source <(kubectl completion zsh)'
+alias kctx='kubectx'
 
 # Networking
 
@@ -127,12 +131,6 @@ function probe-ports() {
     for i in {$start..$end}; do nc -zv $1 $i 2>&1 | grep -q succeeded; [ "$?" = "1" ] &&  echo "Port $i probe failed." ;done
   fi
 }
-
-# System services
-function svc-start() { systemctl start $1 ; }
-function svc-stop() { systemctl stop $1 ; }
-function svc-restart() { systemctl restart $1 ; }
-function svc-status() { systemctl status -l $1 ; }
 
 # sshfs mount/umount
 function ssh-mount() {
@@ -159,3 +157,4 @@ alias wttr='curl wttr.in'
 alias add-keys='~/bin/auto-add-keys.sh'
 alias clear_known_hosts='echo > ~/.ssh/known_hosts'
 
+source "$HOME/.zsh/spaceship/spaceship.zsh"
